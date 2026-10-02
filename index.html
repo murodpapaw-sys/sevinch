@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevinch ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #fff5f8);
+            color: #444;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 600px;
+            padding: 28px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(180, 80, 120, 0.18);
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            color: #d6336c;
+            font-size: 34px;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .love {
+            color: #d6336c;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 16px 0;
+        }
+
+        .question {
+            margin-top: 20px;
+            color: #c2255c;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        button {
+            border: none;
+            padding: 12px 23px;
+            margin: 12px 5px 0;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .yes {
+            background: #ff4d88;
+            color: white;
+        }
+
+        .think {
+            background: #ffe3ed;
+            color: #c2255c;
+        }
+
+        #answer {
+            margin-top: 15px;
+            color: #d6336c;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 22px;
+            animation: fly 4s linear forwards;
+        }
+
+        @keyframes fly {
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>Sevinch ❤️</h1>
+
+    <p>
+        Ba'zan inson hayotimizga sezdirmasdan kirib keladi-yu,
+        keyin xayolimizning eng chiroyli qismiga aylanadi.
+    </p>
+
+    <p>
+        Siz ham men uchun shunday inson bo‘lib qoldingiz.
+        Ayniqsa kechalari sizni ko‘p o‘ylayman.
+    </p>
+
+    <p>
+        Siz bilan gaplashganim sari sizni yanada ko‘proq
+        sevib borayotganimni his qilyapman. ❤️
+    </p>
+
+    <div class="love">
+        Men sizni sevib qolganman. ❤️
+    </div>
+
+    <p>
+        Balki bu gaplarim siz uchun kutilmagandir,
+        lekin hammasini chin dildan aytyapman.
+    </p>
+
+    <p>
+        Sizdan hech narsani majburan kutmayman.
+        Faqat meni yaxshiroq tanishingizga imkon bersangiz bo‘ldi.
+    </p>
+
+    <div class="question">
+        Menga imkon berasizmi? ❤️
+    </div>
+
+    <div>
+        <button class="yes" onclick="yesAnswer()">Ha ❤️</button>
+        <button class="think" onclick="thinkAnswer()">O‘ylab ko‘raman</button>
+    </div>
+
+    <div id="answer"></div>
+
+</div>
+
+<script>
+
+function yesAnswer() {
+
+    fetch("/yes");
+
+    document.getElementById("answer").innerText =
+        "Rahmat... ❤️ Bu javobingiz meni juda xursand qildi.";
+
+    for (let i = 0; i < 15; i++) {
+        createHeart();
+    }
+}
+
+function thinkAnswer() {
+
+    fetch("/think");
+
+    document.getElementById("answer").innerText =
+        "Mayli, shoshilmang. O‘ylab ko‘ring. ❤️";
+}
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+</script>
+
+</body>
+</html>
